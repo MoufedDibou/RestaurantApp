@@ -28,6 +28,14 @@ class TextForm extends StatelessWidget {
       child: TextFormField(
         controller: controller,
         obscureText: obscureText,
+        validator: (val){
+
+          if(val ==null || val.isEmpty){
+            return "please enter $hint";
+          }
+          return null;
+        },
+        onSaved: (value) => controller.text=value!,
         keyboardType: textInputType,
         decoration: InputDecoration(
             enabledBorder: OutlineInputBorder(
